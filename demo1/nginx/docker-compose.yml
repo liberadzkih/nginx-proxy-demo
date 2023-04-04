@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - demo-network
+    external_links:
+      - demo1-container
+      - demo2-container
+
+networks:
+  demo-network:
+    external: true
